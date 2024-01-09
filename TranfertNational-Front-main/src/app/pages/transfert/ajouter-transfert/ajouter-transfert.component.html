@@ -1,0 +1,113 @@
+<h1>Ajouter un transfert</h1>
+<form nz-form [formGroup]="validateForm" >
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5" nzFor="gender" nzRequired>Type du transfert </nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="Selectionnez un type !" style="padding-left:10px;">
+        <nz-select
+          id="gender"
+          formControlName="type"
+          nzPlaceHolder="Selectionner le type du transfert national"
+        >
+          <nz-option nzValue="par_debit_de_compte" nzLabel="Par débit de compte"></nz-option>
+          <nz-option nzValue="en_especes" nzLabel="En espèce"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5" nzRequired nzFor="otp">Le client</nz-form-label>
+      <nz-form-control style="margin-left:10px" [nzSpan]="12" nzErrorTip="L'OTP est invalid!">
+        <input nz-input formControlName="client" id="client" />
+      </nz-form-control>
+         <button style="margin-left:10px"  nz-button nzType="primary" (click)="createComponentModal()">
+          <span>Ajouter le client</span>
+        </button>
+    </nz-form-item>
+    <nz-form-item >
+        <nz-form-label [nzSpan]="5" nzRequired nzFor="email">Montant du transfert:</nz-form-label>
+        <nz-form-control style="padding-left:12px;" [nzSpan]="12"  nzErrorTip="Montant du transfert > Plafond Maximal du transfert!">
+            <nz-input-group nzSuffix="Dirhams" nzPrefix="DH">
+            <input nz-input formControlName="montant" id="email" />
+        </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <label style="padding-left:160px;padding-bottom: 20px;" formControlName="notifier" (ngModelChange)="notifierr()" nz-checkbox >Notifier le bénéficiaire par SMS</label><br>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzFor="gender" nzRequired>Type des frais </nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Selectionnez le type des frais !" style="padding-left:10px;">
+          <nz-select
+            id="frais"
+            formControlName="frais"
+            nzPlaceHolder="Selectionner le type des frais"
+          >
+            <nz-option nzValue="parClient" nzLabel="A la charge du client donneur d'ordre"></nz-option>
+            <nz-option nzValue="parBeneficiaire" nzLabel="A la charge du client bénéficiaire"></nz-option>
+            <nz-option nzValue="partages" nzLabel="Partagés entre les clients"></nz-option>
+
+        </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzFor="gender" nzRequired>Motif </nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Selectionnez le motif du transfert !" style="padding-left:10px;">
+          <nz-select
+            id="motif"
+            formControlName="motif"
+            nzPlaceHolder="Selectionner le motif du transfert "
+          >
+            <nz-option nzValue="Soutien_familial" nzLabel="Soutien_familial"></nz-option>
+            <nz-option nzValue="Epargne_investissement" nzLabel="Epargne_investissement"></nz-option>
+            <nz-option nzValue="Cadeau" nzLabel="Cadeau"></nz-option>
+            <nz-option nzValue="Paiement_de_biens_et_de_services" nzLabel="Paiement_de_biens_et_de_services"></nz-option>
+            <nz-option nzValue="Frais_de_dépassement" nzLabel="Frais_de_dépassement"></nz-option>
+            <nz-option nzValue="Frais_d_éducation" nzLabel="Frais_d_éducation"></nz-option>
+            <nz-option nzValue="Location_Hypothèque" nzLabel="Location_Hypothèque"></nz-option>
+            <nz-option nzValue="Aide_de_secours_Médicale" nzLabel="Aide_de_secours_Médicale"></nz-option>
+            <nz-option nzValue="Revenu_d_un_site_internet" nzLabel="Revenu_d_un_site_internet"></nz-option>
+            <nz-option nzValue="Dépenses_salariales" nzLabel="Dépenses_salariales"></nz-option>
+            <nz-option nzValue="Frais_de_loterie_ou_récompense_taxes" nzLabel="Frais_de_loterie_ou_récompense_taxes"></nz-option>
+            <nz-option nzValue="Prêt" nzLabel="Prêt"></nz-option>
+            <nz-option nzValue="Commerce_sur_internet" nzLabel="Commerce_sur_internet"></nz-option>
+            <nz-option nzValue="Donation" nzLabel="Donation"></nz-option>
+
+
+        </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item >
+        <nz-form-label [nzSpan]="5" nzRequired nzFor="email">Le béneficiaire</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Selectionnez le type des frais !" style="padding-left:10px;">
+          <nz-input-group [nzSuffix]="suffixIconSearch">
+        <input
+          placeholder='Chercher le bénéficiaire'
+          nz-input
+          [(ngModel)] = "inputValue"
+          (input)="onInput($event)"
+          [nzAutocomplete]="auto"
+        />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <i nz-icon nzType="search"></i>
+      </ng-template>
+        <nz-autocomplete (selectionChange)="selectedBeneficiaire($event)"#auto>
+          <nz-auto-option *ngFor="let option of filteredOptions" [nzValue]="option">
+            {{ option }}
+          </nz-auto-option>
+        </nz-autocomplete>
+             </nz-form-control>
+             <button (click)="openCreateBenefComponent()" nz-button style="margin-left:10px" nzType="primary"> <i nz-icon nzType="plus"></i></button>
+
+            </nz-form-item>
+
+            <!-- <nz-form-item>
+              <nz-form-label [nzSpan]="5" nzRequired nzFor="otp">Saisir l'OTP</nz-form-label>
+              <nz-form-control style="margin-left:10px" [nzSpan]="12" nzErrorTip="L'OTP est invalid!">
+                <input nz-input formControlName="otp" id="otp" />
+              </nz-form-control>
+            </nz-form-item> -->
+      <nz-form-item>
+      <nz-form-control [nzSpan]="12" [nzOffset]="5">
+        <button nz-button nzType="primary" (click)="submitForm()">Valider</button>
+      </nz-form-control>
+    </nz-form-item>
+    
+  </form>

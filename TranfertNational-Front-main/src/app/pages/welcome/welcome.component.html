@@ -1,0 +1,47 @@
+<!-- <h3>BALANCES</h3>
+<nz-card style="width:300px;">
+    <p>Dirhams:</p>
+    <p>Card content</p>
+  </nz-card> -->
+<br>
+<h3>Historique des transferts :</h3>
+
+  <nz-table #nzTable  nzShowPagination nzShowSizeChanger
+   [nzData]="listOfDisplayData" nzTableLayout="fixed">
+    <thead>
+      <tr>
+        <th nzCustomFilter>
+          Nom et Prenom
+        </th>
+        <th>GSM
+            <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                <i nz-icon nzType="search"></i>
+              </nz-filter-trigger>
+        </th>
+        <th>Address</th>
+        <th>Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of nzTable.data">
+        <td>{{ data.name }}</td>
+        <td>{{ data.age }}</td>
+        <td>{{ data.address }}</td>
+        <td>
+            <a>Ajouter un Transfert</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a>Infos</a>
+          </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <div class="ant-table-filter-dropdown">
+      <div class="search-box">
+        <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+        <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Search</button>
+        <button nz-button nzSize="small" (click)="reset()">Reset</button>
+      </div>
+    </div>
+  </nz-dropdown-menu>

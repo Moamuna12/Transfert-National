@@ -1,0 +1,700 @@
+tester l'ajout d'un client avec 3 comptes wallet et piece
+{
+  "nom": "Morgan",
+  "prenom": "Debra",
+  "telephone": "+445643535",
+  "piece_identite": {
+    "type_piece_identite": "passeport",
+    "numero": "AM9854895",
+    "date_de_naissance": "1989-01-11T10:54:15.277Z",
+    "pays": "Amerique",
+    "date_d_expiration": "2024-01-11T10:54:15.277Z"
+  },
+  "comptes": [
+    {
+      "montant": 30000,
+      "client": "string",
+      "date_ouverture": "2012-01-11T10:54:15.277Z",
+      "type": "commission"
+    },
+	{
+      "montant": 50000,
+      "client": "string",
+      "date_ouverture": "2016-01-11T10:54:15.277Z",
+      "type": "fonctionnement"
+    }
+  ],
+  "type": "partenaire",
+  "sexe": "M",
+  "profession": "Lieutnant",
+  "pays_d_adresse": "Amerique",
+  "adresselegale": "rue 33 45",
+  "email": "debmorgan@gmail.com",
+  "wallet": {
+    "cartes": [
+      {
+        "wallet": "string",
+        "montant": 10000,
+        "date_expiration": "2025-01-11T10:54:15.277Z"
+      },
+	{
+        "wallet": "string",
+        "montant": 30000,
+        "date_expiration": "2024-01-11T10:54:15.277Z"
+      },
+	{
+        "wallet": "string",
+        "montant": 40000,
+        "date_expiration": "2026-01-11T10:54:15.277Z"
+      }
+    ]
+  },
+  "ville": "miami"
+}
+
+//tester update client
+{
+ 
+  "nom": "Morgan",
+  "prenom": "Harrison",
+  "telephone": "+434644535",
+  "piece_identite": null,
+  "comptes": [],
+  "type": "partenaire",
+  "sexe": "M",
+  "profession": "Etudiant",
+  "pays_d_adresse": "Amerique",
+  "adresselegale": "rue 33 43",
+  "email": "Harrymorgan@gmail.com",
+  "wallet": null,
+  "ville": "Iron Lake"
+}
+
+attribuer une piece a un client
+{
+  "idClient": 3,
+  "nom": "Korey",
+  "prenom": "Alexa",
+  "telephone": "0645363784",
+  "piece_identite": {
+  "id": 5
+},
+  "comptes": [],
+  "type": "de_passage",
+  "sexe": "Mme",
+  "profession": null,
+  "pays_d_adresse": "maroc",
+  "adresselegale": "12 rue 2",
+  "email": "k@a.com",
+  "wallet": null,
+  "ville": "safi"
+}
+
+//tester l'ajout d'un agent
+
+
+{
+  
+  "nom": "Henrietta",
+  "prenom": "Anna",
+  "telephone": "+45234534",
+  "piece_identite": {
+    "type_piece_identite": "passeport",
+    "numero": "AM423432",
+    "date_de_naissance": "2022-01-11T18:13:13.320Z",
+    "pays": "Mexico",
+    "date_d_expiration": "2022-01-11T18:13:13.320Z"
+  },
+  "comptes": [
+    {
+      "montant": 10000,
+      "client": null,
+      "date_ouverture": "2022-01-11T18:13:13.320Z",
+      "type": "commission"
+    }
+  ],
+  "type": "partenaire",
+  "sexe": "Mme",
+  "profession": "Agent",
+  "pays_d_adresse": "Etats Unis",
+  "adresselegale": "rue 2343 564",
+  "email": "annahenriette@gmail.com",
+  "wallet": {
+    
+    "cartes": [
+      {
+        "wallet": "string",
+        "montant": 10000,
+        "date_expiration": "2022-01-11T18:13:13.320Z"
+      }
+    ]
+  },
+  "ville": "meknes",
+  "salary": 300000,
+  "pointdevente": {
+    
+    "numero_de_ville": 2,
+    "ville": "meknes",
+    "pays": "Maroc",
+    "transfert_demandes": [],
+    "transfert_servis": [],
+    "agents": [],
+    "montant_maximal": 10000
+  }
+}
+
+
+{
+  "nom": "Arrana",
+  "prenom": "Guilherme",
+  "telephone": "+3427623823",
+  "piece_identite": {
+    "type_piece_identite": "passeport",
+    "numero": "BR0984894",
+    "date_de_naissance": "1999-01-11T12:27:30.573Z",
+    "pays": "string",
+    "date_d_expiration": "1999-01-11T12:27:30.573Z"
+  },
+  "comptes": [
+    {
+      "montant": 10000,
+      "client": null,
+      "date_ouverture": "2021-01-11T12:27:30.573Z",
+      "type": "commission"
+    },
+	{
+      "montant": 30000,
+      "client": null,
+      "date_ouverture": "2020-01-11T12:27:30.573Z",
+      "type": "commission"
+    }
+  ],
+  "type": "partenaire",
+  "sexe": "M",
+  "profession": "Agent",
+  "pays_d_adresse": "Maroc",
+  "adresselegale": "Maroc",
+  "email": "guilhermearrana@gmail.com",
+  "wallet": {
+    "cartes": [
+      {
+        "wallet": "string",
+        "montant": 10000,
+        "date_expiration": "2025-01-11T12:27:30.573Z"
+      }
+    ]
+  },
+  "ville": "Rio",
+  "salary": 30000,
+  "pointdevente": {
+     "numero_de_ville": 3,
+  "ville": "safi",
+  "pays": "Maroc",
+  "montant_maximal": 20000
+  }
+}
+
+
+//tester la misa a jour d'un agent
+
+{
+  "idClient": 6,
+  "nom": "Arrana",
+  "prenom": "Guilherme",
+  "telephone": "+3427623823",
+  "piece_identite": null,
+  "comptes": null,
+  "type": "partenaire",
+  "sexe": "M",
+  "profession": "Agent",
+  "pays_d_adresse": "Maroc",
+  "adresselegale": "Maroc",
+  "email": "AranaGuilherme@gmail.com",
+  "wallet": null,
+  "ville": "Rio",
+  "salary": 30000,
+  "pointdevente": null,
+  "transfert": null
+}
+
+
+tester l'ajout d'un beneficiaire
+
+{
+  "nom": "James",
+  "prenom": "Doackes",
+  "telephone": "+44543455",
+  "piece_identite": {
+    "type_piece_identite": "passeport",
+    "numero": "AM45345",
+    "date_de_naissance": "1990-01-11T13:04:37.866Z",
+    "pays": "Amerique",
+    "date_d_expiration": "2025-01-11T13:04:37.866Z"
+  },
+  "comptes": [
+    {
+      "montant": 10000,
+      "client": null,
+      "date_ouverture": "2020-01-11T13:04:37.866Z",
+      "type": "commission"
+    }
+  ],
+  "type": "partenaire",
+  "sexe": "M",
+  "profession": "Sergent",
+  "pays_d_adresse": "Maroc",
+  "adresselegale": "rue 23 45",
+  "email": "james@gmail.com",
+  "wallet": {
+    "cartes": [
+      {
+        "wallet": "string",
+        "montant": 2000,
+        "date_expiration": "2024-01-11T13:04:37.866Z"
+      },
+	{
+        "wallet": "string",
+        "montant": 20000,
+        "date_expiration": "2025-01-11T13:04:37.866Z"
+      }
+    ]
+  },
+  "ville": "miami",
+  "nbr_transfert_recus": 0
+}
+
+tester la mise a jour d'un beneficiare
+{
+  "idClient": 7,
+  "nom": "James",
+  "prenom": "Doackes",
+  "telephone": "+44543455",
+  "piece_identite": null,
+  "comptes": null,
+  "type": "partenaire",
+  "sexe": "M",
+  "profession": "Sergent",
+  "pays_d_adresse": "Etats Unis",
+  "adresselegale": "rue 23 45",
+  "email": "JamesDoakces@gmail.com",
+  "wallet": null,
+  "ville": "miami",
+  "nbr_transfert_recus": 0,
+  "transfert": null
+}
+
+tester l'ajout d'une carte sur un wallet existant (1)
+
+{
+  "wallet": {
+  "id": 3
+},
+  "montant": 45000,
+  "date_expiration": "2022-01-11T13:34:44.607Z"
+}
+
+tester la mise a jour d'une carte 
+
+{
+  "wallet": null,
+  "montant": 5000,
+  "date_expiration": "2024-01-11T13:04:37.000+00:00"
+}
+
+tester l'ajout d'un compte avec client
+{
+  "montant": 10000,
+  "client": {
+  "idClient": 8
+},
+  "date_ouverture": "2022-01-11T14:27:52.315Z",
+  "type": "commission"
+}
+
+
+tester l'ajout d'un compte sans client
+{
+  "montant": 10000,
+  "client": null,
+  "date_ouverture": "2022-01-11T14:27:52.315Z",
+  "type": "commission"
+}
+
+
+mettre a jour le client et le solde du compte
+
+{
+  
+  "montant": 10000,
+  "client": {
+  "idClient": 2
+},
+  "date_ouverture": "2022-01-11T14:27:52.000+00:00",
+  "type": "commission"
+}
+
+tester l'ajout d'un emetteur
+
+{
+  "nom": "Ali",
+  "prenom": "Ben",
+  "telephone": "+333422545",
+  "piece_identite": {
+    "type_piece_identite": "passeport",
+    "numero": "FR373424",
+    "date_de_naissance": "2002-01-11T15:18:55.939Z",
+    "pays": "string",
+    "date_d_expiration": "2025-01-11T15:18:55.939Z"
+  },
+  "comptes": [
+    {
+      "montant": 1000,
+      "client": null,
+      "date_ouverture": "2020-01-11T15:18:55.940Z",
+      "type": "commission"
+    }
+  ],
+  "type": "partenaire",
+  "sexe": "M",
+  "profession": "",
+  "pays_d_adresse": "France",
+  "adresselegale": "",
+  "email": "ben@ali.com",
+  "wallet": {
+    "cartes": [
+      {
+        "wallet": null,
+        "montant": 5100,
+        "date_expiration": "2024-01-11T15:18:55.940Z"
+      },
+{
+        "wallet": null,
+        "montant": 1200,
+        "date_expiration": "2024-01-11T15:18:55.940Z"
+      }
+    ]
+  },
+  "ville": "paris",
+  "limite_somme_transfert": 1000,
+  "nbr_transfert_envoyes": 0
+} 
+
+tester la mise a jour d'un emeteur
+
+{
+  "idClient": 8,
+  "nom": "Ali",
+  "prenom": "Ben",
+  "telephone": "+333422545",
+  "piece_identite": null,
+  "comptes":null,
+  "type": "partenaire",
+  "sexe": "M",
+  "profession": "",
+  "pays_d_adresse": "France",
+  "adresselegale": "rue du man",
+  "email": "Ben@Ali.com",
+  "wallet": null,
+  "ville": "paris",
+  "limite_somme_transfert": 10000,
+  "nbr_transfert_envoyes": 0,
+  "transfert": null
+}
+
+ajouter point de vente
+
+{
+  
+  "numero_de_ville": 1,
+  "ville": "safi",
+  "pays": "Maroc",
+  "montant_maximal": 10000
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+tester l'ajout d'un transfert
+
+{
+      "reference": "B43253425",
+      "codePin": "42423423",
+      "type": "en_especes",
+      "etat": "à_servir",
+      "delai_de_validite": "2022-01-11T17:24:21.085Z",
+      "delai_de_desherence": "2022-01-11T17:24:21.085Z",
+      "date_demission": "2022-01-11T17:24:21.085Z",
+      "date_de_blocage": "2022-01-11T17:24:21.085Z",
+      "date_de_deblocage": "2022-01-11T17:24:21.085Z",
+      "montant_transfert": 1200000,
+      "montant_operation": 20000,
+      "comission": 10000,
+      "frais": 1000,
+      "emetteur": {
+  "idClient": 8,
+  "nom": "Ali",
+  "prenom": "Ben",
+  "telephone": "+333422545",
+  "piece_identite": {
+    "id": 4,
+    "type_piece_identite": "passeport",
+    "numero": "FR373424",
+    "date_de_naissance": "2002-01-11T15:18:55.000+00:00",
+    "pays": "string",
+    "date_d_expiration": "2025-01-11T15:18:55.000+00:00"
+  },
+  "comptes": [
+    {
+      "idCompte": 14,
+      "montant": 1000,
+      "date_ouverture": "2020-01-11T15:18:55.000+00:00",
+      "type": "commission"
+    }
+  ],
+  "type": "partenaire",
+  "sexe": "M",
+  "profession": "",
+  "pays_d_adresse": "France",
+  "adresselegale": "rue du man",
+  "email": "Ben@Ali.com",
+  "wallet": {
+    "id": 5,
+    "cartes": [
+      {
+        "id": 10,
+        "montant": 5100,
+        "date_expiration": "2024-01-11T15:18:55.000+00:00"
+      },
+      {
+        "id": 11,
+        "montant": 1200,
+        "date_expiration": "2024-01-11T15:18:55.000+00:00"
+      }
+    ]
+  },
+  "ville": "paris",
+  "limite_somme_transfert": 10000,
+  "nbr_transfert_envoyes": 0,
+  "transfert": null
+},
+      "agent": {
+  "idClient": 6,
+  "nom": "Arrana",
+  "prenom": "Guilherme",
+  "telephone": "+3427623823",
+  "piece_identite": {
+    "id": 2,
+    "type_piece_identite": "passeport",
+    "numero": "BR0984894",
+    "date_de_naissance": "1999-01-11T12:27:30.000+00:00",
+    "pays": "bresil",
+    "date_d_expiration": "1999-01-11T12:27:30.000+00:00"
+  },
+  "comptes": [
+    {
+      "idCompte": 3,
+      "montant": 10000,
+      "date_ouverture": "2021-01-11T12:27:30.000+00:00",
+      "type": "commission"
+    },
+    {
+      "idCompte": 4,
+      "montant": 30000,
+      "date_ouverture": "2020-01-11T12:27:30.000+00:00",
+      "type": "commission"
+    }
+  ],
+  "type": "partenaire",
+  "sexe": "M",
+  "profession": "Agent",
+  "pays_d_adresse": "Maroc",
+  "adresselegale": "Maroc",
+  "email": "AranaGuilherme@gmail.com",
+  "wallet": {
+    "id": 2,
+    "cartes": [
+      {
+        "id": 4,
+        "montant": 10000,
+        "date_expiration": "2025-01-11T12:27:30.000+00:00"
+      }
+    ]
+  },
+  "ville": "Rio",
+  "salary": 30000,
+  "pointdevente": {
+    "id": 1,
+    "numero_de_ville": 2,
+    "ville": "Marrakech",
+    "pays": "Maroc",
+    "transfert_demandes": [],
+    "transfert_servis": [],
+    "montant_maximal": 10000000
+  },
+  "transfert": null
+},
+      "pays_d_emission": "Maroc",
+      "beneficiaire": {
+  "idClient": 7,
+  "nom": "James",
+  "prenom": "Doackes",
+  "telephone": "+44543455",
+  "piece_identite": {
+    "id": 3,
+    "type_piece_identite": "passeport",
+    "numero": "AM45345",
+    "date_de_naissance": "1990-01-11T13:04:37.000+00:00",
+    "pays": "Amerique",
+    "date_d_expiration": "2025-01-11T13:04:37.000+00:00"
+  },
+  "comptes": [
+    {
+      "idCompte": 5,
+      "montant": 10000,
+      "date_ouverture": "2020-01-11T13:04:37.000+00:00",
+      "type": "commission"
+    }
+  ],
+  "type": "partenaire",
+  "sexe": "M",
+  "profession": "Sergent",
+  "pays_d_adresse": "Etats Unis",
+  "adresselegale": "rue 23 45",
+  "email": "JamesDoakces@gmail.com",
+  "wallet": {
+    "id": 3,
+    "cartes": [
+      {
+        "id": 5,
+        "montant": 5000,
+        "date_expiration": "2024-01-11T13:04:37.000+00:00"
+      },
+      {
+        "id": 6,
+        "montant": 20000,
+        "date_expiration": "2025-01-11T13:04:37.000+00:00"
+      },
+      {
+        "id": 9,
+        "montant": 5000,
+        "date_expiration": "2024-01-11T13:04:37.000+00:00"
+      }
+    ]
+  },
+  "ville": "miami",
+  "nbr_transfert_recus": 0,
+  "transfert": null
+},
+      "motif": "Soutien_familial",
+      "transfertMultiple": null,
+      "lieuDeService": {
+  "id": 9,
+  "numero_de_ville": 1,
+  "ville": "rabbat",
+  "pays": "Maroc",
+  "transfert_demandes": [],
+  "transfert_servis": [],
+  "agents": [],
+  "montant_maximal": 40000
+},
+      "lieuDeDemande": {
+  "id": 10,
+  "numero_de_ville": 2,
+  "ville": "rabbat",
+  "pays": "Maroc",
+  "transfert_demandes": [],
+  "transfert_servis": [],
+  "agents": [],
+  "montant_maximal": 50000
+}
+}
+
+
+
+
+{
+      "reference": "B4332225",
+      "codePin": "42455423",
+      "type": "en_especes",
+      "etat": "à_servir",
+      "delai_de_validite": "2022-01-11T17:24:21.085Z",
+      "delai_de_desherence": "2022-01-11T17:24:21.085Z",
+      "date_demission": "2022-01-11T17:24:21.085Z",
+      "date_de_blocage": "2022-01-11T17:24:21.085Z",
+      "date_de_deblocage": "2022-01-11T17:24:21.085Z",
+      "montant_transfert": 1250000,
+      "montant_operation": 50000,
+      "comission": 1000,
+      "frais": 100,
+      "emetteur": {
+  "idClient": 14
+},
+      "agent": {
+  "idClient": 15
+},
+      "pays_d_emission": "Maroc",
+      "beneficiaire": {
+  "idClient": 11
+  },
+      "motif": "Soutien_familial",
+      "transfertMultiple": null,
+      "lieuDeService": {
+    "id": 7},
+      "lieuDeDemande": {
+    "id": 8
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+emetteur
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+<h3>Liste des comptes :</h3>
+
+  <nz-table #nzTable  nzShowPagination nzShowSizeChanger
+   [nzData]="listOfDisplayData" nzTableLayout="fixed">
+    <thead>
+      <tr>
+        <th>Id compte
+            <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                <i nz-icon nzType="search"></i>
+              </nz-filter-trigger>
+        </th>
+
+        <th>Client
+            <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                <i nz-icon nzType="search"></i>
+              </nz-filter-trigger>
+        </th>
+        <th>Date d'ouverture</th>
+        <th>Montant</th>
+        <th>Type</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of nzTable.data">
+        <td>{{data.idCompte}}</td>
+        <td>{{data.client.nom}} {{data.client.prenom}}</td>
+        <td>{{data.date_ouverture | date:'d MMMM y'}}</td>
+        <td>{{data.montant}}</td>
+        <td>{{data.type}}</td>
+
+      </tr>
+    </tbody>
+  </nz-table>
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <div class="ant-table-filter-dropdown">
+      <div class="search-box">
+        <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+        <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Search</button>
+        <button nz-button nzSize="small" (click)="reset()">Reset</button>
+      </div>
+    </div>
+  </nz-dropdown-menu>

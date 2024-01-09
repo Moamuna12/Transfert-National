@@ -1,0 +1,43 @@
+<h3>Liste des emetteurs:</h3>
+
+  <nz-table #nzTable  nzShowPagination nzShowSizeChanger
+   [nzData]="listOfDisplayData" nzTableLayout="fixed">
+    <thead>
+      <tr>
+        <th>Id emetteur</th>
+        <th>Nom et Prenom</th>
+        <th>GSM</th>
+        <th>Sexe</th>
+        <th>Profession</th>
+        <th>Type</th>
+        <th>Pays d'adresse</th>
+        <th>Addresse legale</th>
+        <th>Email</th>
+        <th>Ville</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of nzTable.data">
+        <td>{{ data.idClient }}</td>
+        <td>{{ data.nom }} {{data.prenom}}</td>
+        <td>{{ data.telephone }}</td>
+        <td>{{ data.sexe }}</td>
+        <td>{{ data.profession }}</td>
+        <td>{{ data.type }}</td>
+        <td>{{data.pays_d_adresse}}</td>
+        <td>{{ data.adresselegale }}</td>
+        <td>{{ data.email }}</td>
+        <td>{{ data.ville }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <div class="ant-table-filter-dropdown">
+      <div class="search-box">
+        <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+        <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Search</button>
+        <button nz-button nzSize="small" (click)="reset()">Reset</button>
+      </div>
+    </div>
+  </nz-dropdown-menu>

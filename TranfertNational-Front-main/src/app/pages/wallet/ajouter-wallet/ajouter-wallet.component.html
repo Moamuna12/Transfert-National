@@ -1,0 +1,27 @@
+<p>Ajouter Wallet :</p>
+
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="number">id Wallet</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input formControlName="idWallet" id="idWallet" />
+      </nz-form-control>
+    </nz-form-item>
+    <!-- <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="number">Id Client</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="nville" id="nville" />
+        </nz-form-control>
+    </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="text">Id Carte</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="pays" id="pays" />
+        </nz-form-control>
+      </nz-form-item> -->
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button [disabled]="!validateForm.valid" nzType="primary">Ajouter</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>

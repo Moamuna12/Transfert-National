@@ -1,0 +1,165 @@
+<nz-layout class="app-layout">
+    <nz-sider class="menu-sidebar"
+              nzCollapsible
+              nzWidth="256px"
+              nzBreakpoint="md"
+              [(nzCollapsed)]="isCollapsed"
+              [nzTrigger]="null">
+      <div class="sidebar-logo">
+        <a href="" target="_blank">
+          <!-- <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo"> -->
+          <h1>Tranfert National</h1>
+        </a>
+      </div>
+      <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+        <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+            <ul>
+              <li nz-menu-item nzMatchRouter>
+                <a routerLink="dashboard/home">Dashboard</a>
+              </li>
+            </ul>
+          </li>
+          <div *ngIf="client.role=='agent' || client.role=='admin'">
+        <li nz-submenu nzOpen nzTitle="Transferts" nzIcon="send">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="transfert/all">Afficher les transferts</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="transfert/add">Ajouter un transfert</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="transfert/add-multiple">Ajouter un transfert multiple</a>
+            </li>
+            <div *ngIf="client.role=='admin'">
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="transfert/bloquer">Bloquer un tranfert</a>
+            </li>
+        </div>
+          </ul>
+        </li>
+    </div>
+        <div *ngIf="client.role=='admin'">
+        <li nz-submenu nzOpen nzTitle="Agents" nzIcon="user">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="agents/all">Afficher agents</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="agents/add">Ajouter agent</a>
+            </li>
+          </ul>
+        </li>
+        <li nz-submenu nzOpen nzTitle="Beneficiaires" nzIcon="user">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="beneficiaire/all">Afficher beneficiaires</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="beneficiaire/add" >Ajouter beneficiaire</a>
+            </li>
+          </ul>
+        </li>
+        <li nz-submenu nzOpen nzTitle="Cartes de credit" nzIcon="credit-card">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="cartecredit/all">Afficher cartes de credit</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="cartecredit/add">Ajouter carte de credit</a>
+            </li>
+          </ul>
+        </li>
+      </div>
+      <div *ngIf="client.role=='admin' || client.role=='agent'">
+
+        <li nz-submenu nzOpen nzTitle="Clients" nzIcon="user">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="client/all">Afficher clients</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="client/add">Ajouter client</a>
+            </li>
+          </ul>
+        </li>
+      </div>
+      <div *ngIf="client.role=='admin'">
+
+        <!-- <li nz-submenu nzOpen nzTitle="Comptes" nzIcon="audit">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="compte/all">Afficher comptes</a>
+            </li>
+          </ul>
+        </li> -->
+        <li nz-submenu nzOpen nzTitle="Emetteurs" nzIcon="user">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="emetteur/all">Afficher emetteurs</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="emetteur/add">Ajouter emetteur</a>
+            </li>
+          </ul>
+        </li>
+        <!-- <li nz-submenu nzOpen nzTitle="Gichets a billets" nzIcon="money-collect">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="gichet/all">Afficher gichets a billets</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="gichet/add">Ajouter gichets a billet</a>
+            </li>
+          </ul>
+        </li> -->
+        <li nz-submenu nzOpen nzTitle="Points de ventes" nzIcon="form">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="pointvente/all">Afficher les points de ventes</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="pointvente/add">Ajouter un point de ventes</a>
+            </li>
+          </ul>
+        </li>
+        <!-- <li nz-submenu nzOpen nzTitle="Wallets" nzIcon="wallet">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="wallet/all">Afficher les wallets</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="wallet/add">Ajouter une wallet</a>
+            </li>
+          </ul>
+        </li> -->
+    </div>
+      </ul>
+    </nz-sider>
+    <nz-layout>
+      <nz-header>
+        <div class="app-header">
+         
+        <div nz-col nzSpan="20" nzOffset="20">
+            <nz-button-group>
+                <button nz-button >{{client.nom}} {{client.prenom}}</button>
+                <button nz-button nz-dropdown [nzDropdownMenu]="menu1" nzPlacement="bottomRight">
+                  <i nz-icon nzType="ellipsis"></i>
+                </button>
+              </nz-button-group>
+              <nz-dropdown-menu #menu1="nzDropdownMenu">
+                <ul nz-menu>
+                  <li nz-menu-item (click)="log()">Log Out</li>
+                </ul>
+              </nz-dropdown-menu>
+        </div>
+    </div>
+
+      </nz-header>
+      <nz-content>
+        <div class="inner-content">
+          <router-outlet></router-outlet>
+        </div>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>

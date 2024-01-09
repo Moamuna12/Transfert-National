@@ -1,0 +1,71 @@
+<h3>Liste des transferts:</h3>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Bloquer le transfert" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+    <h3>Êtes-vous sûr de vouloir bloquer le transfert ?</h3>
+  </ng-container>
+</nz-modal>
+<nz-modal [(nzVisible)]="isVisible2" nzTitle="Debloquer le transfert" (nzOnCancel)="handleCancel2()" (nzOnOk)="handleOk2()">
+  <ng-container *nzModalContent>
+    <h3>Êtes-vous sûr de vouloir debloquer le transfert ?</h3>
+  </ng-container>
+</nz-modal>
+  <nz-table #nzTable  nzShowPagination nzShowSizeChanger
+   [nzData]="listOfDisplayData" nzTableLayout="fixed">
+    <thead>
+      <tr>
+        <th>Reference
+            <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                <i nz-icon nzType="search"></i>
+              </nz-filter-trigger>
+        </th>
+        <th nzCustomFilter>
+            
+          Date d'emission
+        </th>
+        <th>Delai de validite
+
+        </th>
+        <th>Date de bloquage</th>
+        <th>Date de debloquage</th>
+        <th>Etat</th>
+        <th>Montant d'operation</th>
+        <th>Montant transfert</th>
+        <th>Agent</th>
+        <th>Emetteur</th>
+        <th>beneficiaire</th>
+        <th>Type</th>
+        <th>Action</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of nzTable.data">
+        <td>{{ data.reference }}</td>
+        <td>{{data.date_demission|date:'d MMMM y'}}</td>
+        <td>{{data.delai_de_validite|date:'d MMMM y'}}</td>
+        <td>{{data.date_de_blocage|date:'d MMMM y'}}</td>
+        <td>{{data.date_de_deblocage|date:'d MMMM y'}}</td>
+        <td>{{data.etat}}</td>
+        <td>{{data.montant_operation}}</td>
+        <td>{{data.montant_transfert}}</td>
+        <td>{{data.agent.nom}} {{data.agent.prenom}}</td>
+        <td>{{data.emetteur.nom}} {{data.emetteur.prenom}}</td>
+        <td>{{data.beneficiaire.nom}} {{data.beneficiaire.prenom}}</td>
+        <td>{{data.type}}</td>
+        <td><div *ngIf="data.etat=='à_servir'"><a (click)="showModal(data)">Bloquer</a></div>
+          <nz-divider nzType="vertical"></nz-divider>
+           <div *ngIf="data.etat=='bloque'"><a (click)="showModal2(data)">Debloquer</a></div>
+          </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <div class="ant-table-filter-dropdown">
+      <div class="search-box">
+        <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+        <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Search</button>
+        <button nz-button nzSize="small" (click)="reset()">Reset</button>
+      </div>
+    </div>
+  </nz-dropdown-menu>

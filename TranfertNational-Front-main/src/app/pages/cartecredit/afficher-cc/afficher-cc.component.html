@@ -1,0 +1,30 @@
+<h3>Liste des carte de credits :</h3>
+
+  <nz-table #nzTable  nzShowPagination nzShowSizeChanger
+   [nzData]="listOfDisplayData" nzTableLayout="fixed">
+    <thead>
+      <tr>
+        <th>Id carte</th>
+        <th>Wallet</th>
+        <th>Date d'expiration</th>
+        <th>Montant</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of nzTable.data">
+        <td>{{data.id}}</td>
+        <td>{{ data.wallet.client.nom}} {{data.wallet.client.prenom}}</td>
+        <td>{{ data.date_expiration| date:'d MMMM y' }}</td>
+        <td>{{data.montant}}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <div class="ant-table-filter-dropdown">
+      <div class="search-box">
+        <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+        <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Search</button>
+        <button nz-button nzSize="small" (click)="reset()">Reset</button>
+      </div>
+    </div>
+  </nz-dropdown-menu>

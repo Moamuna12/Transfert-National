@@ -1,0 +1,27 @@
+<h3>Ajouter une carte :</h3>
+
+<form nz-form [formGroup]="ccForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="number">L'id du Wallet</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input formControlName="idWallet" id="idWallet" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>Date d'expiration</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <nz-date-picker formControlName="datePicker"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="number">Montant</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="montant" id="montant" />
+        </nz-form-control>
+      </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button [disabled]="!ccForm.valid" nzType="primary">Ajouter</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>

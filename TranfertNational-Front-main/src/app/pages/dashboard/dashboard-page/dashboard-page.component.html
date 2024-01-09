@@ -1,0 +1,21 @@
+<div class="container" id="main-container">
+<div class="row">
+  <div class="col-md-6 col-xl-4">
+     <div class="card m-b-30">
+        <div class="card-body row">
+          <div class="col-6 float-end">
+            <a href=""><img src="../../../../assets/profile.png" alt="" class="img-fluid rounded-circle w-60"></a>
+        </div>
+        
+        </div>
+        <ul class="list-group list-group-flush">
+           <li class="list-group-item"><i class="fa fa-phone float-right"></i><h2>Téléphone : {{client?.telephone}}</h2></li>
+           <li class="list-group-item"><i class="fa fa-envelope float-right"></i><h2>Email : {{client?.email}}</h2></li>
+           <li class="list-group-item"><i class="fa fa-phone float-right"></i><h2>Votre Solde : {{client.comptes[0].montant}} Dhs</h2></li>
+           <li class="list-group-item"><i class="fa fa-phone float-right"></i><h2>Rôle : {{client?.role}}</h2></li>
+           <li class="list-group-item"><i class="fa fa-phone float-right"></i><h2>Adresse : {{client.pays_d_adresse}}, {{client.ville}}</h2></li>
+        </ul>
+     </div>
+  </div>
+</div>
+</div>

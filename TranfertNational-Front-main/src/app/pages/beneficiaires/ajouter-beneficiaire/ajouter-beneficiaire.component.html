@@ -1,0 +1,44 @@
+<h3>Ajouter un bénéficiaire :</h3>
+
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Nom </nz-form-label>
+    <nz-form-control       style="padding-left:10px;"
+    [nzSm]="14" [nzXs]="24" nzErrorTip="Ajoutez le nom du béneficiaire !">
+      <input nz-input formControlName="nom" id="nom" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Prénom </nz-form-label>
+      <nz-form-control       style="padding-left:10px;"
+      [nzSm]="14" [nzXs]="24" nzErrorTip="Ajoutez le prénom du béneficiaire !">
+        <input nz-input formControlName="prenom" id="prenom" />
+      </nz-form-control>
+    </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="telephone" nzRequired>GSM</nz-form-label>
+    <nz-form-control
+    style="padding-left:10px;"
+      [nzSm]="14"
+      [nzXs]="24"
+      [nzValidateStatus]="validateForm.controls['telephone']"
+      nzErrorTip="Please input your phone number!"
+    >
+      <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+        <ng-template #addOnBeforeTemplate>
+          <nz-select formControlName="phoneNumberPrefix" class="phone-select">
+            <nz-option nzLabel="+212" nzValue="+86"></nz-option>
+          </nz-select>
+        </ng-template>
+        <input formControlName="telephone" id="'telephone'" nz-input />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item nz-row class="register-area">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary" (click)="destroyModal()">Ajouter</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

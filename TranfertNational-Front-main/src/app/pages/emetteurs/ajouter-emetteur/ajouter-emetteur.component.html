@@ -1,0 +1,126 @@
+<h3>Ajouter un emetteur :</h3>
+
+<form nz-form [formGroup]="emetteurForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Nom</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+      <input nz-input formControlName="nom" id="nom" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Prenom</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+        <input nz-input formControlName="prenom" id="prenom" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="gender" nzRequired>Sexe </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Selectionnez un type !" style="padding-left:10px;">
+        <nz-select
+          id="gender"
+          formControlName="sexe"
+          nzPlaceHolder="Selectionner le sexe"
+        >
+          <nz-option nzValue="M" nzLabel="Homme"></nz-option>
+          <nz-option nzValue="Mme" nzLabel="Femme"></nz-option>
+
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Pays d'adresse</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+        <input nz-input formControlName="pays_d_adresse" id="pays_d_adresse" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Adresse legale</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+        <input nz-input formControlName="adresselegale" id="adresselegale" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Ville</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+        <input nz-input formControlName="ville" id="ville" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+        <input nz-input formControlName="email" id="email" />
+      </nz-form-control>
+    </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>Phone Number</nz-form-label>
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      [nzValidateStatus]="emetteurForm.controls['telephone']"
+      nzErrorTip="Please input your phone number!"
+    >
+      <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+        <ng-template #addOnBeforeTemplate>
+          <nz-select formControlName="phoneNumberPrefix" class="phone-select">
+            <nz-option nzLabel="+212" nzValue="+212"></nz-option>
+          </nz-select>
+        </ng-template>
+        <input formControlName="telephone" id="telephone" nz-input />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="gender" nzRequired>Type </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Selectionnez un type !" style="padding-left:10px;">
+      <nz-select
+        id="gender"
+        formControlName="type"
+        nzPlaceHolder="Selectionner le type de l'emetteur"
+      >
+        <nz-option nzValue="partenaire" nzLabel="Partenaire"></nz-option>
+        <nz-option nzValue="de_passage" nzLabel="De passage"></nz-option>
+
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <div>
+  <nz-form-item *ngIf="nbrComptes==0" >
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary" (click)="ajouterCompte()">Ajouter un compte</button>
+    </nz-form-control>
+  </nz-form-item>
+</div>
+  <div *ngIf="nbrComptes>0">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Montant</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+        <input nz-input formControlName="montant" id="montant" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Date d'ouverture</nz-form-label>
+      <nz-date-picker formControlName="date_ouverture" (ngModelChange)="onChange($event)"></nz-date-picker>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="gender" nzRequired>Type de compte </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Selectionnez un type !" style="padding-left:10px;">
+        <nz-select
+          id="gender"
+          formControlName="typeCompte"
+          nzPlaceHolder="Selectionner le type de compte"
+        >
+          <nz-option nzValue="commission" nzLabel="Commission"></nz-option>
+          <nz-option nzValue="cantonnement" nzLabel="Cantonnement"></nz-option>
+          <nz-option nzValue="fonctionnement" nzLabel="Fonctionnement"></nz-option>
+
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <nz-form-item nz-row class="register-area">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button [disabled]="!emetteurForm.valid" nzType="primary">Ajouter</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

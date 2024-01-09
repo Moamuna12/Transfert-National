@@ -1,0 +1,18 @@
+<nz-form-item >
+    <nz-form-label [nzSpan]="5" nzRequired nzFor="email">Le client</nz-form-label>
+    <nz-form-control [nzSpan]="12" nzErrorTip="Selectionnez le type des frais !" style="padding-left:10px;">
+      <nz-input-group [nzSuffix]="suffixIconSearch">
+    <input
+      placeholder='Chercher le client'
+      nz-input
+      (ngModelChange)="onChange($event)"
+      [nzAutocomplete]="auto"
+    />
+  </nz-input-group>
+  <ng-template #suffixIconSearch>
+    <i nz-icon nzType="search"></i>
+   
+  </ng-template>
+    <nz-autocomplete (selectionChange)="destroyModal($event)" [nzDataSource]="filteredOptions" #auto  ></nz-autocomplete>
+         </nz-form-control>
+        </nz-form-item>
